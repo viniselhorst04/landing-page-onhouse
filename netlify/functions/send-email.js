@@ -15,7 +15,7 @@ exports.handler = async function(event, context) {
             user: 'viniciusselhorst18@gmail.com',
             // DICA DE SEGURANÇA: No Netlify, o ideal é usar Variáveis de Ambiente (Environment Variables)
             // para não deixar a senha exposta no código, mas para testar agora vamos usar a senha direta.
-            pass: 'gqat yktt delt mfsb' 
+            pass: process.env.EMAIL_PASS
         }
     });
 
