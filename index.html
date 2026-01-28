@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnHouse - Gestão Inteligente de Condomínios</title>
+    
+    <!-- Tailwind CSS (Estilização rápida) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#002233',
+                        'tech-green': '#D9FF65',
+                        'tech-lime': '#D9FF65',
+                        'tech-orange': '#FD6301',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonte Inter (Similar à usada na Techfin) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Nosso CSS Personalizado -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white text-navy font-sans antialiased">
+
+    <!-- NAV BAR -->
+    <nav class="bg-navy/95 backdrop-blur-md fixed w-full z-50 transition-all duration-300 border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="assets/logoOnHouse.png" alt="Logo OnHouse" class="h-10 w-auto">
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#funcionalidades" class="text-gray-300 hover:text-white transition font-medium">Funcionalidades</a>
+                    <a href="#beneficios" class="text-gray-300 hover:text-white transition font-medium">Benefícios</a>
+                    <a href="#contato" class="px-6 py-2 bg-tech-green text-navy rounded-full hover:bg-lime-400 transition font-bold shadow-lg hover:shadow-lime-500/50">Agendar Demo</a>
+                </div>
+                <div class="flex items-center md:hidden">
+                    <button onclick="toggleMenu()" class="text-white hover:text-tech-green focus:outline-none">
+                        <i class="ph ph-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg absolute w-full">
+            <a href="#funcionalidades" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 border-b border-gray-100">Funcionalidades</a>
+            <a href="#beneficios" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 border-b border-gray-100">Benefícios</a>
+            <a href="#contato" class="block px-4 py-3 text-blue-600 font-bold hover:bg-gray-50">Agendar Demo</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="bg-navy pt-32 pb-16 md:pt-48 md:pb-32 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center relative overflow-hidden">
+        <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0 z-10">
+            <div class="inline-block px-4 py-1 mb-6 text-xs font-bold tracking-wider text-navy uppercase bg-tech-green rounded-full">
+                Novo Lançamento
+            </div>
+            <h1 class="text-5xl md:text-7xl font-light text-white leading-tight mb-6">
+                A gestão do seu condomínio, <strong class="font-bold text-tech-green">simplificada.</strong>
+            </h1>
+            <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                Elimine a papelada e melhore a comunicação entre síndicos e moradores. Tudo o que você precisa em um único aplicativo.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="#contato" class="px-8 py-4 bg-tech-green text-navy rounded-full font-bold text-lg hover:bg-lime-400 transition shadow-lg hover:shadow-lime-500/50 text-center">
+                    Começar Agora
+                </a>
+                <a href="#funcionalidades" class="px-8 py-4 bg-transparent text-white border border-white/30 rounded-full font-bold text-lg hover:bg-white/10 transition text-center">
+                    Saiba Mais
+                </a>
+            </div>
+        </div>
+        
+        <div class="md:w-1/2 flex justify-center relative z-10 mt-10 md:mt-0">
+            <!-- Mockup do Celular -->
+            <div class="relative bg-navy rounded-[2.5rem] shadow-2xl w-72 h-[550px] border-[8px] border-navy overflow-hidden ring-1 ring-white/20">
+                <!-- Tela interna -->
+                <div class="absolute top-0 left-0 w-full h-full bg-white overflow-hidden flex flex-col">
+                    <!-- Barra de status fake -->
+                    <div class="h-6 bg-tech-green w-full flex items-center justify-end px-2 space-x-1">
+                        <div class="w-3 h-3 bg-white/50 rounded-full"></div>
+                        <div class="w-3 h-3 bg-white/50 rounded-full"></div>
+                    </div>
+                    <!-- Conteúdo fake do app -->
+                    <div class="flex-1 bg-gray-100 p-4">
+                        <div class="h-8 w-3/4 bg-gray-200 rounded mb-4 animate-pulse"></div>
+                        <div class="h-32 w-full bg-lime-50 rounded-xl mb-4 flex items-center justify-center text-navy">
+                            <i class="ph ph-chart-line-up text-4xl"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="h-12 w-full bg-white rounded shadow-sm"></div>
+                            <div class="h-12 w-full bg-white rounded shadow-sm"></div>
+                            <div class="h-12 w-full bg-white rounded shadow-sm"></div>
+                        </div>
+                    </div>
+                    <!-- Tab bar fake -->
+                    <div class="h-16 bg-white border-t flex justify-around items-center text-gray-300">
+                        <i class="ph ph-house text-2xl text-navy"></i>
+                        <i class="ph ph-users text-2xl"></i>
+                        <i class="ph ph-gear text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elementos decorativos de fundo (Blobs) -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-tech-green rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-blob"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-tech-green rounded-full mix-blend-screen filter blur-[80px] opacity-10 animate-blob animation-delay-2000 ml-20 mt-20"></div>
+        </div>
+    </header>
+
+    <!-- FUNCIONALIDADES -->
+    <section id="funcionalidades" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-gray-500 font-bold tracking-wide uppercase text-sm">Funcionalidades</h2>
+                <h3 class="mt-2 text-4xl leading-8 font-light tracking-tight text-navy sm:text-5xl">
+                    Tudo em <strong class="font-bold">um só lugar</strong>
+                </h3>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Ferramentas pensadas para resolver os problemas reais do dia a dia condominial.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="group p-10 bg-white rounded-3xl shadow-card hover:shadow-2xl transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-lime-50 text-navy rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-receipt text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-navy mb-3">Boletos e Financeiro</h4>
+                    <p class="text-gray-600 leading-relaxed">Emissão de segunda via, prestação de contas transparente e gráficos financeiros em tempo real.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group p-10 bg-white rounded-3xl shadow-card hover:shadow-2xl transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-calendar-check text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-navy mb-3">Reservas Online</h4>
+                    <p class="text-gray-600 leading-relaxed">Agendamento de áreas comuns com aprovação automática, lista de convidados e regras personalizadas.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group p-10 bg-white rounded-3xl shadow-card hover:shadow-2xl transition duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-orange-50 text-tech-orange rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="ph ph-megaphone text-3xl"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-navy mb-3">Mural de Avisos</h4>
+                    <p class="text-gray-600 leading-relaxed">Notificações push para comunicados importantes, assembleias virtuais e enquetes rápidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFÍCIOS / PROVA SOCIAL -->
+    <section id="beneficios" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-light text-navy mb-6">Por que escolher o <strong class="font-bold">OnHouse?</strong></h3>
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-tech-green text-navy">
+                                    <i class="ph ph-shield-check text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg leading-6 font-bold text-navy">Segurança de Dados</h4>
+                                <p class="mt-2 text-base text-gray-500">Seus dados criptografados e backups diários automáticos.</p>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <div class="flex items-center justify-center h-12 w-12 rounded-xl bg-tech-green text-navy">
+                                    <i class="ph ph-device-mobile text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg leading-6 font-bold text-navy">Acesso Mobile</h4>
+                                <p class="mt-2 text-base text-gray-500">Aplicativo nativo para iOS e Android com interface intuitiva.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-card border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 flex text-xl">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic text-lg mb-6">"Desde que implementamos o OnHouse, as reclamações sobre reservas diminuíram 90%. A transparência financeira trouxe paz para as assembleias."</p>
+                    <div class="flex items-center">
+                        <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-500 font-bold">RC</div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-gray-900">Roberto Carlos</p>
+                            <p class="text-sm text-gray-500">Síndico Profissional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL / CONTATO -->
+    <section id="contato" class="py-24 bg-navy text-white relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-light mb-6">Pronto para <strong class="font-bold text-tech-green">modernizar</strong> seu condomínio?</h2>
+            <p class="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
+                Junte-se a centenas de síndicos que já facilitaram sua gestão. Solicite uma demonstração gratuita hoje mesmo.
+            </p>
+            <form id="contactForm" class="max-w-md mx-auto flex flex-col gap-4 bg-white/5 p-8 rounded-3xl backdrop-blur-sm border border-white/10">
+                <input type="text" name="condominio" placeholder="Nome do Condomínio" class="w-full px-6 py-4 rounded-full text-navy focus:outline-none focus:ring-2 focus:ring-tech-green bg-white" required>
+                <input type="tel" name="telefone" placeholder="Seu WhatsApp / Telefone" class="w-full px-6 py-4 rounded-full text-navy focus:outline-none focus:ring-2 focus:ring-tech-green bg-white" required>
+                <input type="email" name="email" placeholder="Seu melhor e-mail" class="w-full px-6 py-4 rounded-full text-navy focus:outline-none focus:ring-2 focus:ring-tech-green bg-white" required>
+                <button type="submit" class="w-full px-8 py-4 bg-tech-green text-navy hover:bg-lime-400 rounded-full font-bold text-lg transition shadow-lg transform hover:-translate-y-1">
+                    Quero uma demonstração
+                </button>
+            </form>
+            <p class="mt-6 text-sm text-gray-400">Sem compromisso. Teste grátis por 15 dias.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy text-gray-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <span class="text-2xl font-bold text-white">On<span class="text-tech-green">House</span></span>
+                <p class="mt-4 text-sm max-w-xs">Transformando a convivência e a gestão condominial através da tecnologia simples e eficiente.</p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="ph ph-instagram-logo text-2xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="ph ph-linkedin-logo text-2xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="ph ph-facebook-logo text-2xl"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase text-sm mb-4">Produto</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#funcionalidades" class="hover:text-white transition">Funcionalidades</a></li>
+                    <li><a href="#" class="hover:text-white transition">Preços</a></li>
+                    <li><a href="#" class="hover:text-white transition">Para Síndicos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold uppercase text-sm mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Privacidade</a></li>
+                    <li><a href="#" class="hover:text-white transition">Termos de Uso</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-sm text-center">
+            &copy; 2023 OnHouse. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Script para enviar o formulário para o backend
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault(); // Impede o recarregamento da página
+            
+            const button = this.querySelector('button');
+            const originalText = button.innerText;
+            
+            // Feedback visual
+            button.innerText = 'Enviando...';
+            button.disabled = true;
+            button.classList.add('opacity-75', 'cursor-not-allowed');
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('Obrigado! Sua solicitação foi enviada com sucesso. Entraremos em contato em breve.');
+                    this.reset();
+                } else {
+                    alert('Houve um erro ao enviar. Por favor, tente novamente ou contate-nos pelo WhatsApp.');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Erro de conexão. Verifique sua internet.');
+            } finally {
+                button.innerText = originalText;
+                button.disabled = false;
+                button.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body>
+</html>
