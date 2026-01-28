@@ -8,6 +8,15 @@ exports.handler = async function(event, context) {
 
     const { condominio, telefone, email } = JSON.parse(event.body);
 
+    // LOG DE DIAGNÓSTICO: Verifica se a senha existe (sem revelar ela)
+    console.log("Iniciando processo de envio...");
+    console.log("Variável EMAIL_PASS definida?", process.env.EMAIL_PASS ? "SIM" : "NÃO");
+
+    if (!process.env.EMAIL_PASS) {
+        console.error("ERRO CRÍTICO: A senha do e-mail não foi encontrada nas variáveis de ambiente.");
+        return { statusCode: 500, body: JSON.stringify({ message: 'Erro de configuração interna.' }) };
+    }
+
     // Configuração do transporte de e-mail
     const transporter = nodemailer.createTransport({
         service: 'gmail', 
@@ -39,7 +48,7 @@ exports.handler = async function(event, context) {
             body: JSON.stringify({ message: 'Email enviado!' })
         };
     } catch (error) {
-        console.error('Erro ao enviar email:', error);
+        console.error('ERRO AO ENVIAR EMAIL (Detalhes):', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Erro ao enviar email.' })
