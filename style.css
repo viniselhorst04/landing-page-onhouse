@@ -32,3 +32,25 @@ html {
     background-color: #D9FF65; /* Techfin Green */
     color: #002233; /* Navy */
 }
+
+/* EFEITO 3D MOCKUP */
+.perspective-container {
+    perspective: 1500px; /* Define a profundidade da cena */
+}
+
+.mockup-3d {
+    transform-style: preserve-3d;
+    /* Rotaciona levemente para a esquerda e para cima */
+    transform: rotateY(-15deg) rotateX(10deg) rotateZ(-2deg);
+    /* Cria a ilusão de espessura lateral e sombra profunda */
+    box-shadow: 
+        25px 25px 50px rgba(0,0,0,0.5), /* Sombra no chão */
+        1px 1px 0px #00111a, 2px 2px 0px #00111a, 3px 3px 0px #00111a, 4px 4px 0px #00111a, 5px 5px 0px #00111a; /* Camadas de espessura */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mockup-3d:hover {
+    /* Ao passar o mouse, o celular "olha" para frente e flutua */
+    transform: rotateY(0deg) rotateX(0deg) scale(1.05) translateY(-10px);
+    box-shadow: 0px 30px 60px rgba(0,0,0,0.3);
+}
