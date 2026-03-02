@@ -87,8 +87,33 @@
         
         <div class="md:w-1/2 flex justify-center relative z-10 mt-10 md:mt-0">
             <!-- Mockup do Celular -->
-            <div class="relative z-20 transition-transform duration-500 hover:scale-105">
-                <img src="assets/mkp_site_phone.jpg" alt="Mockup Aplicativo OnHouse" class="w-auto h-[600px] md:h-[750px] object-contain drop-shadow-2xl scale-x-[-1]">
+            <div class="relative z-20 bg-navy rounded-[2.5rem] shadow-2xl w-72 h-[550px] border-[8px] border-navy overflow-hidden ring-1 ring-white/20 hover:scale-105 transition-transform duration-500">
+                <!-- Tela interna -->
+                <div class="absolute top-0 left-0 w-full h-full bg-white overflow-hidden flex flex-col">
+                    <!-- Barra de status fake -->
+                    <div class="h-6 bg-tech-green w-full flex items-center justify-end px-2 space-x-1">
+                        <div class="w-3 h-3 bg-white/50 rounded-full"></div>
+                        <div class="w-3 h-3 bg-white/50 rounded-full"></div>
+                    </div>
+                    <!-- Conteúdo fake do app -->
+                    <div class="flex-1 bg-gray-100 p-4">
+                        <div class="h-8 w-3/4 bg-gray-200 rounded mb-4 animate-pulse"></div>
+                        <div class="h-32 w-full bg-lime-50 rounded-xl mb-4 flex items-center justify-center text-navy">
+                            <i class="ph ph-chart-line-up text-4xl"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="h-12 w-full bg-white rounded shadow-sm"></div>
+                            <div class="h-12 w-full bg-white rounded shadow-sm"></div>
+                            <div class="h-12 w-full bg-white rounded shadow-sm"></div>
+                        </div>
+                    </div>
+                    <!-- Tab bar fake -->
+                    <div class="h-16 bg-white border-t flex justify-around items-center text-gray-300">
+                        <i class="ph ph-house text-2xl text-navy"></i>
+                        <i class="ph ph-users text-2xl"></i>
+                        <i class="ph ph-gear text-2xl"></i>
+                    </div>
+                </div>
             </div>
 
             <!-- Elementos decorativos de fundo (Blobs) -->
